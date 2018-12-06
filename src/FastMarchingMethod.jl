@@ -1,0 +1,3 @@
+module FastMarchingMethod
+
+end # module
