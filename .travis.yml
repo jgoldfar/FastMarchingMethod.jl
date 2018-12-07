@@ -14,6 +14,7 @@ matrix:
   allow_failures:
     - julia: nightly
 
-#after_success:
-#  # push coverage results to Coveralls
-#  - julia -e "VERSION >= v\"0.7.0-DEV.5183\" && using Pkg; Pkg.add(\"Coverage\"); using Coverage; Coveralls.submit(Coveralls.process_folder())"
+after_success:
+  # push coverage results to Coveralls
+  - julia -e "VERSION >= v\"0.7.0-DEV.5183\" && using Pkg; cd(Pkg.dir(\"${JL_PKG}\")); Pkg.add(\"Coverage\"); using Coverage; Coveralls.submit(Coveralls.process_folder())"
+  - julia -e "VERSION >= v\"0.7.0-DEV.5183\" && using Pkg; cd(Pkg.dir(\"${JL_PKG}\")); Pkg.add(\"Coverage\"); using Coverage; Codecov.submit(Codecov.process_folder())"
